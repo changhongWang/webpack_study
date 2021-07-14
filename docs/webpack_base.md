@@ -89,3 +89,43 @@ plugins: [
 ## mode
 用于指定当前环境，可选项 production / development / none
 设置mode后可以使用webpack内置的函数，默认值为production
+
+# 解析
+### 解析ES6
+使用babel-loader
+babel-presets preset是一系列plugins的集合
+babel-plugins 一个plugin对应一个功能
+
+### 解析JSX
+babel/preset-react
+
+### 解析图片和字体
+file-loader
+
+### 解析less/sass
+
+### 文件监听
+两种方式
+- 启动webpack时，带上--watch参数
+- webpack.config.js中设置 watch: true
+
+#### 原理
+轮询判断文件的最后编辑时间是否变化
+某个文件发生了变化，并不会立即告诉监听者，而是先缓存起来，等aggregateTimeout
+
+### webpack-dev-server 热更新 HMR
+webpack-dev-server --open 每次执行完自动开启浏览器
+webpack-dev-middleware 适用于灵活的定制场景
+
+#### 原理
+
+### 文件指纹
+hash
+chunkHash
+contentHash
+
+### 代码压缩
+HTML/CSS/JS
+HTML: html-webpack-plugin 设置压缩参数
+CSS: optimize-css-assets-webpack-plugin 同时使用cssnano
+JS: UglifyJS ?
