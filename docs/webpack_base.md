@@ -60,7 +60,7 @@ less-loader less -> css
 ts-loader TS -> JS
 file-loader 进行图片、字体、多媒体等的打包
 raw-loader 将文件以字符串方式传入
-thread-loader `多进程`打包 JS 和 CSS
+thread-loader **多进程**打包 JS 和 CSS
 
 #### 使用方法
 
@@ -143,9 +143,15 @@ webpack-dev-middleware 适用于灵活的定制场景 - 使用 webpack-hot-middl
 
 ### 文件指纹
 
-hash
-chunkHash
-contentHash
+hash: 和**整个项目**的构建相关，只要项目文件有修改，整个项目构建的 hash 值就会更改
+chunk hash: 和 webpack 打包的 **chunk** 有关，不同的 **entry** 会生成不同的 chunk hash 值
+content hash: 根据**文件内容**来定义 hash, 文件内容不变, 则 content hash 不变
+
+js 文件指纹设置
+`module.exports = { output: { filename: '[name][chunkhash:8].js' } }`
+CSS 文件指纹设置
+设置 MiniCssExtractPlugin 的 filename，使用 [contenthash]
+`module.exports = { plugins: [ new MiniCssExtractPlugin({ filename: '[name][contenthash:8].css' }) ] }`
 
 ### 代码压缩
 
