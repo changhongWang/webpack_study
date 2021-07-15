@@ -106,7 +106,7 @@ file-loader
 
 ### 文件监听
 两种方式
-- 启动webpack时，带上--watch参数
+- webpack观察模式: 启动webpack时，带上--watch参数。 缺点：没法自动刷新浏览器
 - webpack.config.js中设置 watch: true
 
 #### 原理
