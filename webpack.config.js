@@ -1,4 +1,7 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   mode: "development",
@@ -6,12 +9,21 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].js",
+    publicPath: "/",
   },
   devtool: "inline-source-map",
   devServer: {
     contentBase: "./",
     hot: true,
   },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "管理输出",
+      template: "./index.html",
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   module: {
     rules: [
       {
