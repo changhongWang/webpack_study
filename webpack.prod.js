@@ -2,9 +2,11 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: path.join(__dirname, "./src/index.js"),
   output: {
     path: path.join(__dirname, "dist"),
@@ -23,12 +25,19 @@ module.exports = {
       template: "./index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name]_[contenthash:8].css",
+    }),
+    new OptimizeCssAssetsWebpackPlugin({
+      assetNameReqExp: /\.css$/g,
+      cssProcessor: require("cssnano"),
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.m?js$/,
@@ -39,6 +48,17 @@ module.exports = {
             presets: ["@babel/preset-env"],
           },
         },
+      },
+      {
+        test: /.(png|jpg|gif|jpeg)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name]_[hash:8][ext]",
+            },
+          },
+        ],
       },
     ],
   },

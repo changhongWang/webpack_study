@@ -158,4 +158,4 @@ CSS 文件指纹设置
 HTML/CSS/JS
 HTML: html-webpack-plugin 设置压缩参数
 CSS: optimize-css-assets-webpack-plugin 同时使用 cssnano
-JS: UglifyJS ?
+JS: uglifyjs-webpack-plugin / 可以用 parrellel 开启并行压缩
