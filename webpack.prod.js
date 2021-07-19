@@ -28,16 +28,35 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name]_[contenthash:8].css",
     }),
-    new OptimizeCssAssetsWebpackPlugin({
-      assetNameReqExp: /\.css$/g,
-      cssProcessor: require("cssnano"),
-    }),
+    // new OptimizeCssAssetsWebpackPlugin({
+    //   assetNameReqExp: /\.css$/g,
+    //   cssProcessor: require("cssnano"),
+    // }),
   ],
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "autoprefixer",
+                    {
+                      overrideBrowserslist: ["last 2 version", ">1%", "ios 7"],
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.m?js$/,
