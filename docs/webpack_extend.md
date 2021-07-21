@@ -25,3 +25,5 @@ clean-webpack-plugin
 开发环境开启，线上环境关闭。
 
 - 线上排查问题时可以将 sourceMap 上传到错误监控系统，如 Sentry
+
+devtool: 'source-map'
