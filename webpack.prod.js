@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
+  mode: "production",
   entry: path.join(__dirname, "./src/index.js"),
   output: {
     path: path.join(__dirname, "dist"),
@@ -39,6 +40,13 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
+          {
+            loader: "px2rem-loader",
+            options: {
+              remUnit: 75,
+              remPrecision: 8,
+            },
+          },
           "sass-loader",
           {
             loader: "postcss-loader",

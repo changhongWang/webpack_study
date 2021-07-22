@@ -9,6 +9,10 @@
 <html>
   <head>
     <title>Test Webpack</title>
+    <%= require('!!raw-loader!./meta.html') %>
+    <script>
+      <%= require('!!raw-loader!babel-loader!./node_modules/lib-flexible/flexible.js') %>
+    </script>
   </head>
   <body>
     <div id="root"></div>

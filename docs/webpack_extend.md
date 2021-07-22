@@ -12,6 +12,10 @@ clean-webpack-plugin
 
 ## webpack 预渲染
 
+## 静态资源内联
+
+raw-loader
+
 ## CSS 内联
 
 1. 借助 style-loader

@@ -28,7 +28,19 @@ module.exports = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "px2rem-loader",
+            // options here
+            options: {
+              remUnit: 100,
+              remPrecision: 8,
+            },
+          },
+          "sass-loader",
+        ],
       },
       {
         test: /\.m?js$/,

@@ -13,7 +13,7 @@ const arr = ["Wang", "Changhong"];
 export default function Home() {
   return (
     <div>
-      <h3>This is renderred From React!</h3>
+      <h3 className="title">This is renderred From React!</h3>
       <ul className="name-list">
         {arr.map((item, index) => (
           <li key={index}>{item}</li>
