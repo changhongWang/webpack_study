@@ -2,6 +2,7 @@
   "name": "webpack_study",
   "version": "1.0.0",
   "description": "",
+  "sideEffects": false,
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
