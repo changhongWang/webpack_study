@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: changhong.wang
+ * @Date: 2021-07-27 22:53:09
+ * @LastEditors: changhong.wang
+ * @LastEditTime: 2021-07-27 23:53:33
+-->
 # 进阶用法
 
 ## 自动清理构建目录
@@ -76,3 +83,9 @@ webpack 提供代码分割功能，当代码运行到需要他们的时候再进
 ##### 动态 import
 
 @babel/plugin-syntax-dynamic-import
+
+## ESLint
+
+##### 作用
+- 规范团队代码
+- 避免出错
