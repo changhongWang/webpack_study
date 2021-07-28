@@ -1,3 +1,11 @@
+<!--
+ * @Description:
+ * @Author: changhong.wang
+ * @Date: 2021-07-27 22:53:09
+ * @LastEditors: changhong.wang
+ * @LastEditTime: 2021-07-27 23:53:33
+-->
+
 # 进阶用法
 
 ## 自动清理构建目录
@@ -79,7 +87,12 @@ webpack 提供代码分割功能，当代码运行到需要他们的时候再进
 
 ## webpack + ESLint
 
-ESLint 如何执行？
+##### 作用
+
+- 规范团队代码
+- 避免出错
+
+##### ESLint 如何执行？
 
 - 与 CI/CD 系统集成 - 不符合规则的构建不成功
   本地开发阶段增加 precommit 钩子(husky+lint-staged)

@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: changhong.wang
+ * @Date: 2021-07-27 22:53:09
+ * @LastEditors: changhong.wang
+ * @LastEditTime: 2021-07-27 23:37:37
+ */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -45,12 +52,12 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
+        use: [{
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env"],
+            },
+          }, 'eslint-loader'],
       },
     ],
   },
