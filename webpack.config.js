@@ -1,5 +1,5 @@
 /*
- * @Description: 
+ * @Description:
  * @Author: changhong.wang
  * @Date: 2021-07-27 22:53:09
  * @LastEditors: changhong.wang
@@ -52,12 +52,14 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        use: [{
+        use: [
+          {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
             },
-          }, 'eslint-loader'],
+          },
+        ],
       },
     ],
   },
