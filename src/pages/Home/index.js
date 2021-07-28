@@ -6,6 +6,7 @@
  * @LastEditTime: 2021-07-14 09:34:05
  */
 import React, { Component } from "react";
+import add from "@chwangstudy/large-number";
 import "./index.scss";
 
 const arr = ["Wang", "Changhong"];
@@ -25,6 +26,10 @@ class Home extends Component {
         dynamic: res.default(),
       });
     });
+  }
+
+  componentDidMount() {
+    console.log(add);
   }
 
   render() {

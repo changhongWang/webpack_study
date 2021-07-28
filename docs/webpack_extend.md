@@ -76,3 +76,12 @@ webpack 提供代码分割功能，当代码运行到需要他们的时候再进
 ##### 动态 import
 
 @babel/plugin-syntax-dynamic-import
+
+## webpack + ESLint
+
+ESLint 如何执行？
+
+- 与 CI/CD 系统集成 - 不符合规则的构建不成功
+  本地开发阶段增加 precommit 钩子(husky+lint-staged)
+- 与 webpack 集成
+  使用 eslint-loader，构建时检查 JS 规范
