@@ -1,5 +1,5 @@
 /*
- * @Description: 
+ * @Description:
  * @Author: changhong.wang
  * @Date: 2021-07-27 22:53:09
  * @LastEditors: changhong.wang
@@ -11,6 +11,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -35,6 +36,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name]_[contenthash:8].css",
     }),
+    new FriendlyErrorsWebpackPlugin(),
     // new OptimizeCssAssetsWebpackPlugin({
     //   assetNameReqExp: /\.css$/g,
     //   cssProcessor: require("cssnano"),
@@ -75,12 +77,15 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        use: [{
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env"],
+            },
           },
-        }, 'eslint-loader'],
+          "eslint-loader",
+        ],
       },
       {
         test: /.(png|jpg|gif|jpeg)$/,

@@ -98,3 +98,17 @@ webpack 提供代码分割功能，当代码运行到需要他们的时候再进
   本地开发阶段增加 precommit 钩子(husky+lint-staged)
 - 与 webpack 集成
   使用 eslint-loader，构建时检查 JS 规范
+
+## 日志
+
+##### stat
+
+errors-only 仅在发生错误时输出
+minimal 仅在发生错误时 或 有新的编译时 输出
+none 没有输出
+normal 标准输出
+verbose 全部输出
+
+##### 为项目增加友好的输出提示内容
+
+插件：friendly-errors-webpack-plugin
