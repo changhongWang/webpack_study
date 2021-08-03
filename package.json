@@ -9,7 +9,8 @@
     "watch": "webpack watch",
     "dev": "webpack && webpack serve --hot",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node server.js"
+    "server": "node server.js",
+    "ssr": "webpack --config webpack.ssr.js"
   },
   "keywords": [],
   "author": "",
