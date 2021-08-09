@@ -107,5 +107,4 @@ type 表示某次提交的类型，比如是修复一个 bug 还是提交一个�
 
 ##### 本地开发阶段增加 precommit 钩子
 
-1. husky + commitmsg + validate-commit-msg
-2. 通过 commitmsg 钩子校验信息
+husky + commitlint
