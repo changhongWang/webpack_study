@@ -58,3 +58,54 @@
 #### 测试覆盖率
 
 istanbul
+
+## 持续集成
+
+每一次发布版本之前 都应该有一个持续集成的功能，主要看用例是否能正常跑通
+作用：
+
+- 快速发现错误
+- 防止分支大幅偏离主干
+  核心措施：代码集成到主干之前，必须通过自动化测试。只要又一个测试用例失败，就不能集成。
+
+## 发布包到 npm
+
+每次发布之前注意打 git tag
+
+## git 规范和 changelog 生成
+
+良好的 git commit 优势：
+
+- 加快 CR 流程
+- 可以根据 git commit 直接生成 changelog
+- 后续维护者可以知道 feature 被修改的原因
+
+## git 提交标准规范
+
+`
+<type>(<scope>): <subject>
+<BLANK LINE>
+
+<body>
+<BLANK LINE>
+<footer>
+`
+
+##### 对格式的说明：
+
+type 表示某次提交的类型，比如是修复一个 bug 还是提交一个新的 feature，现有 type 类型如下：
+
+- feat: 新增 feature
+- fix: 修复 bug
+- docs: 仅仅修改了文档，比如 README、CHANGELOG 等
+- style: 仅仅修改了空格、格式缩进等，不改变代码逻辑
+- refactor: 优化重构，没有增加新的 feature 或者修复 bug
+- perf: 优化相关，包括性能、体验
+- test: 测试用例，包括单元测试、集成测试等
+- chore: 改变构建流程，或者增加依赖库、工具等
+- revert: 回滚
+
+##### 本地开发阶段增加 precommit 钩子
+
+1. husky + commitmsg + validate-commit-msg
+2. 通过 commitmsg 钩子校验信息
