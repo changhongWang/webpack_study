@@ -10,8 +10,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 
-module.exports = {
+const smp = new SpeedMeasurePlugin();
+
+module.exports = smp.wrap({
   mode: "development",
   entry: path.join(__dirname, "./src/index.js"),
   output: {
@@ -76,4 +79,4 @@ module.exports = {
       },
     ],
   },
-};
+});

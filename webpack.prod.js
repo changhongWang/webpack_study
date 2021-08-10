@@ -9,11 +9,14 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 
-module.exports = {
+const smp = new SpeedMeasurePlugin();
+
+const prodConfig = {
   mode: "development",
   entry: path.join(__dirname, "./src/index.js"),
   output: {
@@ -33,9 +36,9 @@ module.exports = {
       template: "./index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
-      filename: "[name]_[contenthash:8].css",
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: "[name]_[contenthash:8].css",
+    // }),
     new FriendlyErrorsWebpackPlugin(),
     // new OptimizeCssAssetsWebpackPlugin({
     //   assetNameReqExp: /\.css$/g,
@@ -47,7 +50,7 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          // MiniCssExtractPlugin.loader,
           "css-loader",
           {
             loader: "px2rem-loader",
@@ -101,3 +104,5 @@ module.exports = {
     ],
   },
 };
+
+module.exports = smp.wrap(prodConfig);

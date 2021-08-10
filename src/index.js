@@ -7,6 +7,7 @@
  */
 import React from "react";
 import ReactDOM from "react-dom";
+import Home from "./pages/Home";
 import "./index.scss";
 
 const node = document.getElementById("root");
@@ -14,9 +15,7 @@ const node = document.getElementById("root");
 ReactDOM.render(<Home />, node);
 const getResAfterSec = async (seconds = 2) => {
   const res = await new Promise((resolve) => {
-    setTimeout(() => {
-      return resolve("结果Here");
-    }, seconds * 1000);
+    setTimeout(() => resolve("结果Here"), seconds * 1000);
   });
   console.log(res);
   return 5;

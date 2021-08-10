@@ -12,7 +12,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
     "ssr": "webpack --config webpack.ssr.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build:stats": "webpack --env production --json > stats.json"
   },
   "keywords": [],
   "author": "",
@@ -48,6 +49,7 @@
     "px2rem-loader": "^0.1.9",
     "raw-loader": "^0.5.1",
     "sass-loader": "^12.1.0",
+    "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.1.0",
     "validate-commit-msg": "^2.14.0",
     "webpack": "^5.44.0",

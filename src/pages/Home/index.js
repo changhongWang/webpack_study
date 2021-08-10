@@ -19,6 +19,10 @@ class Home extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log(largeNumber("299", "88"));
+  }
+
   dynamicImport() {
     import("./Components/Dynamic").then((res) => {
       console.log(787, res);
@@ -28,25 +32,23 @@ class Home extends Component {
     });
   }
 
-  componentDidMount() {
-    console.log(largeNumber("299", "88"));
-  }
-
   render() {
+    const { dynamic } = this.state;
     return (
       <div>
         <h3 className="title">This is renderred From React!</h3>
         <button
+          type="button"
           onClick={() => {
             this.dynamicImport();
           }}
         >
           BTN
         </button>
-        {this.state.dynamic ? this.state.dynamic : null}
+        {dynamic}
         <ul className="name-list">
           {arr.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index.toString()}>{item}</li>
           ))}
         </ul>
       </div>
