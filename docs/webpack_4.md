@@ -108,3 +108,15 @@ type 表示某次提交的类型，比如是修复一个 bug 还是提交一个�
 ##### 本地开发阶段增加 precommit 钩子
 
 husky + commitlint
+
+## 语义化版本
+
+##### semver 规范（语义化版本控制规范） semantic version
+
+遵循 semver 规范的优势
+
+- 避免出现循环依赖
+- 依赖冲突减少
+
+先行版本号(alpha/beta/rc[Release Candidate]): alpha 内测版，beta 测试版，rc 不会加入新的功能，主要用于 bug fix
+0.1.0-alpha.0
