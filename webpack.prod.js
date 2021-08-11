@@ -8,6 +8,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const webpack = require("webpack");
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
@@ -44,6 +46,7 @@ const prodConfig = {
     //   assetNameReqExp: /\.css$/g,
     //   cssProcessor: require("cssnano"),
     // }),
+    new BundleAnalyzerPlugin(),
   ],
   module: {
     rules: [

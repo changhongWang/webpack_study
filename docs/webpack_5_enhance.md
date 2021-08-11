@@ -11,3 +11,17 @@ stats: 构建的统计信息
 ## 速度分析：使用 speed-measure-webpack-plugin
 
 可以看到每个 plugin 和 loader 的耗时情况
+
+## 体积分析：使用 webpack-bundle-analyzer 分析体积
+
+`
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+
+module.exports = {
+plugins: [
+new BundlenalyzerPlugin()
+]
+}
+`
+
+构建完成后会在 8888 端口展示大小
