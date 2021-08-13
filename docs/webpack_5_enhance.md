@@ -111,3 +111,7 @@ path: './build/library/[name].json'
 - 优化 resolve.mainFields 配置
 - 优化 resolve.extensions 配置
 - 合理使用 alias
+
+## Tree-shaking 擦除无用的 js 和 css
+
+使用 purgecss-webpack-plugin，和 mini-css-extract-plugin 配合使用
