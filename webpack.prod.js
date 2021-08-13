@@ -11,7 +11,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const webpack = require("webpack");
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
@@ -38,22 +38,22 @@ const prodConfig = {
       template: "./index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
-    // new MiniCssExtractPlugin({
-    //   filename: "[name]_[contenthash:8].css",
-    // }),
+    new MiniCssExtractPlugin({
+      filename: "[name]_[contenthash:8].css",
+    }),
     new FriendlyErrorsWebpackPlugin(),
     // new OptimizeCssAssetsWebpackPlugin({
     //   assetNameReqExp: /\.css$/g,
     //   cssProcessor: require("cssnano"),
     // }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/i,
         use: [
-          // MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,
           "css-loader",
           {
             loader: "px2rem-loader",
@@ -108,4 +108,6 @@ const prodConfig = {
   },
 };
 
-module.exports = smp.wrap(prodConfig);
+// smp包裹之后minicss会出问题
+// module.exports = smp.wrap(prodConfig);
+module.exports = prodConfig;
