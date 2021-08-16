@@ -1,10 +1,11 @@
 <!--
- * @Description: 
+ * @Description:
  * @Author: changhong.wang
  * @Date: 2021-07-27 22:53:09
  * @LastEditors: changhong.wang
  * @LastEditTime: 2021-07-27 23:53:33
 -->
+
 # 进阶用法
 
 ## 自动清理构建目录
@@ -84,8 +85,30 @@ webpack 提供代码分割功能，当代码运行到需要他们的时候再进
 
 @babel/plugin-syntax-dynamic-import
 
-## ESLint
+## webpack + ESLint
 
 ##### 作用
+
 - 规范团队代码
 - 避免出错
+
+##### ESLint 如何执行？
+
+- 与 CI/CD 系统集成 - 不符合规则的构建不成功
+  本地开发阶段增加 precommit 钩子(husky+lint-staged)
+- 与 webpack 集成
+  使用 eslint-loader，构建时检查 JS 规范
+
+## 日志
+
+##### stat
+
+errors-only 仅在发生错误时输出
+minimal 仅在发生错误时 或 有新的编译时 输出
+none 没有输出
+normal 标准输出
+verbose 全部输出
+
+##### 为项目增加友好的输出提示内容
+
+插件：friendly-errors-webpack-plugin

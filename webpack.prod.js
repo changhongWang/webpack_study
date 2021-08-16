@@ -1,5 +1,5 @@
 /*
- * @Description: 
+ * @Description:
  * @Author: changhong.wang
  * @Date: 2021-07-27 22:53:09
  * @LastEditors: changhong.wang
@@ -8,11 +8,17 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 
-module.exports = {
+const smp = new SpeedMeasurePlugin();
+
+const prodConfig = {
   mode: "development",
   entry: path.join(__dirname, "./src/index.js"),
   output: {
@@ -35,10 +41,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name]_[contenthash:8].css",
     }),
+    new FriendlyErrorsWebpackPlugin(),
     // new OptimizeCssAssetsWebpackPlugin({
     //   assetNameReqExp: /\.css$/g,
     //   cssProcessor: require("cssnano"),
     // }),
+    // new BundleAnalyzerPlugin(),
   ],
   module: {
     rules: [
@@ -75,12 +83,15 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        use: [{
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env"],
+            },
           },
-        }, 'eslint-loader'],
+          "eslint-loader",
+        ],
       },
       {
         test: /.(png|jpg|gif|jpeg)$/,
@@ -96,3 +107,7 @@ module.exports = {
     ],
   },
 };
+
+// smp包裹之后minicss会出问题
+// module.exports = smp.wrap(prodConfig);
+module.exports = prodConfig;
