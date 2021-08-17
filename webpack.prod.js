@@ -3,21 +3,24 @@
  * @Author: changhong.wang
  * @Date: 2021-07-27 22:53:09
  * @LastEditors: changhong.wang
- * @LastEditTime: 2021-07-27 23:36:55
+ * @LastEditTime: 2021-08-17 16:49:13
  */
 const path = require("path");
+const glob = require("glob");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+// const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+// const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 
-const smp = new SpeedMeasurePlugin();
-
+// const smp = new SpeedMeasurePlugin();
+const PATHS = {
+  src: path.join(__dirname, 'src'),
+};
 const prodConfig = {
   mode: "development",
   entry: path.join(__dirname, "./src/index.js"),
@@ -47,6 +50,10 @@ const prodConfig = {
     //   cssProcessor: require("cssnano"),
     // }),
     // new BundleAnalyzerPlugin(),
+    new PurgeCSSPlugin({
+      // 插件支持的路径为绝对路径; 多页面场景下需要传递数组
+      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+    }),
   ],
   module: {
     rules: [
