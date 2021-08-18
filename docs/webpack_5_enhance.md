@@ -115,3 +115,19 @@ path: './build/library/[name].json'
 ## Tree-shaking 擦除无用的 js 和 css
 
 使用 purgecss-webpack-plugin，和 mini-css-extract-plugin 配合使用
+
+## 构建体积优化：动态Polyfill
+针对每台设备，所需的polyfill是固定的。
+## 这里再看看 不同方案比较
+es6-shim
+
+polyfill-service
+Polyfill.io
+根据UA判断当前浏览器版本有哪些特性不支持，从而返回对应Polyfill
+
+## webpack优化方法总结
+- scope hoisting
+- Tree shaking
+- 公共资源分离
+- 图片压缩
+- 动态Polyfill
