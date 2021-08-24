@@ -129,6 +129,7 @@ Polyfill.io
 
 - scope hoisting
 - Tree shaking
+
 - 公共资源分离
 - 图片压缩
 - 动态Polyfill
