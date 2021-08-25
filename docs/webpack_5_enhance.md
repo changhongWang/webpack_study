@@ -129,7 +129,23 @@ Polyfill.io
 
 - scope hoisting
 - Tree shaking
-
 - 公共资源分离
 - 图片压缩
 - 动态Polyfill
+
+## Tapable
+Tapable是一个类似于Node.js中EventEmitter的库，主要是控制钩子函数的发布与订阅，控制着webpack的插件系统。
+Tapable库暴露了很多钩子，为插件提供挂载的钩子。
+`
+const {
+    SyncHook,           // 同步钩子
+    SyncBailHook,       // 同步熔断钩子
+    SyncWaterfallHook,  // 同步流水钩子
+    SyncLoopHook,       // 同步循环钩子
+    AsyncParallelHook,          // 异步并发钩子
+    AsyncParallelBailHook,      // 异步并发熔断钩子
+    AsyncSeriesHook,            // 异步串行钩子
+    AsyncSeriesBailHook,        // 异步串行熔断钩子
+    AsyncSeriesWaterfallHook    // 异步串行流水钩子
+}
+`
