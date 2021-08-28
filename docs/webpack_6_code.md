@@ -3,7 +3,7 @@
  * @Author: changhong.wang
  * @Date: 2021-08-17 19:09:58
  * @LastEditors: changhong.wang
- * @LastEditTime: 2021-08-18 17:11:27
+ * @LastEditTime: 2021-08-27 10:40:19
 -->
 # 通过源代码掌握webpack打包原理
 ## webpack命令行
@@ -46,3 +46,39 @@ NON_COMPILATION_ARGS 数组
 
 ##### webpack-cli执行结果
 webpack-cli对配置文件和命令行参数进行转换最终生成配置选项参数options，最终会根据配置参数实例化webpack对象，然后执行构建流程。
+
+
+## Tapable
+Tapable是一个类似于Node.js中EventEmitter的库，主要是控制钩子函数的发布与订阅，控制着webpack的插件系统。
+Tapable库暴露了很多钩子，为插件提供挂载的钩子。
+`
+const {
+    SyncHook,           // 同步钩子
+    SyncBailHook,       // 同步熔断钩子
+    SyncWaterfallHook,  // 同步流水钩子
+    SyncLoopHook,       // 同步循环钩子
+    AsyncParallelHook,          // 异步并发钩子
+    AsyncParallelBailHook,      // 异步并发熔断钩子
+    AsyncSeriesHook,            // 异步串行钩子
+    AsyncSeriesBailHook,        // 异步串行熔断钩子
+    AsyncSeriesWaterfallHook    // 异步串行流水钩子
+}
+`
+
+##### Hook类的使用
+1. 实例化构造函数Hook
+2. 注册（一次或者多次）
+3. 执行（传入参数）
+4. 有需要的话还可以增加对整个流程（包括注册和执行）的监听-拦截器
+
+## webpack执行流程
+按照以下的钩子调用顺序执行
+1. entry-option - 初始化option
+2. run - 开始编译
+3. make - 从entry开始递归分析依赖，对每个依赖模块进行build
+4. before-resolve - 对模块位置进行解析
+5. build-module - 开始构建某个模块
+6. normal-module-loader - 将loader加载完成的module进行编译，生成AST树
+7. program - 遍历AST，当遇到require等一些调用表达式时，收集依赖 require('clean-webpack-plugin')
+8. seal - 所有依赖build完成，开始优化
+9. emit - 输出到dist目录
