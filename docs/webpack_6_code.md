@@ -3,7 +3,7 @@
  * @Author: changhong.wang
  * @Date: 2021-08-17 19:09:58
  * @LastEditors: changhong.wang
- * @LastEditTime: 2021-08-29 23:48:42
+ * @LastEditTime: 2021-08-31 00:00:02
 -->
 # 通过源代码掌握webpack打包原理
 ## webpack命令行
@@ -82,3 +82,6 @@ const {
 7. program - 遍历AST，当遇到require等一些调用表达式时，收集依赖 require('clean-webpack-plugin')
 8. seal - 所有依赖build完成，开始优化
 9. emit - 输出到dist目录
+
+
+
