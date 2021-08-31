@@ -57,6 +57,7 @@
     "@babel/preset-react": "^7.14.5",
     "@chwangstudy/large-number": "1.0.4",
     "babel-loader": "^8.2.2",
+    "tapable": "^2.2.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
