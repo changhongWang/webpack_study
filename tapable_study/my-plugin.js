@@ -3,7 +3,7 @@
  * @Author: changhong.wang
  * @Date: 2021-08-31 15:49:20
  * @LastEditors: changhong.wang
- * @LastEditTime: 2021-08-31 16:13:52
+ * @LastEditTime: 2021-08-31 16:17:36
  */
 const Compiler = require('./compiler');
 
@@ -31,7 +31,7 @@ const myPlugin = new MyPlugin();
 
 const options = {
   plugins: [myPlugin],
-}
+};
 
 const compiler = new Compiler();
 
