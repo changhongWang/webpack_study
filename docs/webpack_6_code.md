@@ -3,7 +3,7 @@
  * @Author: changhong.wang
  * @Date: 2021-08-17 19:09:58
  * @LastEditors: changhong.wang
- * @LastEditTime: 2021-09-17 23:57:30
+ * @LastEditTime: 2021-09-17 23:58:17
 -->
 # 通过源代码掌握webpack打包原理
 ## webpack命令行
@@ -88,4 +88,3 @@ const {
 2. 遍历module的依赖列表，将依赖的module也加入到chunk中
 3. 如果一个依赖module是动态引入的模块，那么就会根据这个module创建一个新的chunk，继续遍历依赖
 4. 重复上面的过程，直到得到所有chunks
-
